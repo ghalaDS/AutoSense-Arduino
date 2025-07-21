@@ -24,11 +24,11 @@ This project is a smart energy-saving system that uses a **PIR motion sensor** a
   </tr>
   <tr>
     <td>Pressed</td>
-    <td><img src="images/button-pressed.png" width="250"/></td>
+    <td><img src="button-pressed.png" width="250"/></td>
   </tr>
   <tr>
     <td>Unpressed + Motion</td>
-    <td><img src="images/button-unpressed.png" width="250"/></td>
+    <td><img src="button-unpressed.png" width="250"/></td>
   </tr>
 </table>
 
@@ -67,7 +67,9 @@ You can try the full simulation here:
 
 Click "Start Simulation" to watch how the servos sweep back and forth using the Arduino logic.
 
+
 ---
+
 
 ## Intelligent Proximity Light System
 A simple and efficient Arduino-based system that uses a Light Dependent Resistor (LDR) and an Ultrasonic Sensor to control an LED. The LED is activated only when ambient light is low and an object is detected within range.
@@ -80,11 +82,11 @@ A simple and efficient Arduino-based system that uses a Light Dependent Resistor
 ### Project Preview
 | LED ON (Dark + Object Detected) | LED OFF (Light or No Object) |
 |----------------------------------|-------------------------------|
-| <img src="images/sensor_dark.png" width="200"/> | <img src="images/sensor_light.png" width="200"/> |
+| <img src="sensor_dark.png" width="200"/> | <img src="sensor_light.png" width="200"/> |
 
 | Serial Output (Dark) | Serial Output (Light) |
 |----------------------|-----------------------|
-| <img src="images/serial_output_dark.png" width="250"/> | <img src="images/serial_output_light.png" width="250"/> |
+| <img src="serial_output_dark.png" width="250"/> | <img src="serial_output_light.png" width="250"/> |
 
 
 ### System Logic
