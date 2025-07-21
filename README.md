@@ -15,6 +15,13 @@ A collection of two smart Arduino-based sensor systems designed for **energy-sav
 
 This project is a smart energy-saving system that uses a **PIR motion sensor** and a **push button** to control a real light bulb using a **relay**. The bulb only turns ON if **motion is detected** *and* **the button is pressed**. When motion stops, the bulb shuts off automatically.
 
+### Features
+- Combines motion detection (PIR) and manual input (button)  
+- Controls a real AC bulb using a relay module  
+- Automatically shuts off the bulb when no motion is detected  
+- Ideal for smart energy-saving lighting in controlled environments  
+- Safe to use with 220V devices through relay isolation
+
 ### Project Preview
 
 <table>
@@ -24,13 +31,28 @@ This project is a smart energy-saving system that uses a **PIR motion sensor** a
   </tr>
   <tr>
     <td>Pressed</td>
-    <td><img src="button-pressed.png" width="250"/></td>
+    <td><img src="button-pressed.png" width="400"/></td>
   </tr>
   <tr>
     <td>Unpressed + Motion</td>
-    <td><img src="button-unpressed.png" width="250"/></td>
+    <td><img src="button-unpressed.png" width="400"/></td>
   </tr>
 </table>
+
+
+### System Logic
+ ```cpp
+if (motion == LOW) {
+  digitalWrite(bulb, LOW);
+  return;
+}
+if (button == HIGH && lastButton == LOW) {
+  bulbState = !bulbState;
+  digitalWrite(bulb, bulbState);
+  delay(200);
+}
+lastButton = button;
+````
 
 ### Components Used
 - Arduino Uno  
@@ -41,17 +63,6 @@ This project is a smart energy-saving system that uses a **PIR motion sensor** a
 - 10kΩ Resistor  
 - Jumper Wires  
 - Breadboard  
-
-### How It Works
-
-```cpp
-| Condition                      | Bulb Behavior             |
-|--------------------------------|---------------------------|
-| No motion                      | Bulb turns OFF            |
-| Motion detected, no button     | Bulb stays OFF            |
-| Motion detected + button press | Bulb toggles ON/OFF       |
-| Motion stops at any time       | Bulb turns OFF immediately|
-```
 
 ### Circuit Wiring
 - `PIR OUT` → Arduino pin **2**  
@@ -82,15 +93,15 @@ A simple and efficient Arduino-based system that uses a Light Dependent Resistor
 ### Project Preview
 | LED ON (Dark + Object Detected) | LED OFF (Light or No Object) |
 |----------------------------------|-------------------------------|
-| <img src="sensor_dark.png" width="200"/> | <img src="sensor_light.png" width="200"/> |
+| <img src="sensor_dark.png" width="400"/> | <img src="sensor_light.png" width="400"/> |
 
 | Serial Output (Dark) | Serial Output (Light) |
 |----------------------|-----------------------|
-| <img src="serial_output_dark.png" width="250"/> | <img src="serial_output_light.png" width="250"/> |
+| <img src="serial_output_dark.png" width="330"/> | <img src="serial_output_light.png" width="330"/> |
 
 
 ### System Logic
-````cpp
+ ```cpp
 if (light < 100 && distance < 100) {
   digitalWrite(ledPin, HIGH);
 } else {
@@ -105,6 +116,15 @@ if (light < 100 && distance < 100) {
 - LED
 - Breadboard
 - Jumper Wires
+
+### Circuit Wiring
+
+- `LDR` → Arduino pin **A1**  
+- `LED` → Arduino pin **11**  
+- `HC-SR04 SIG` → Arduino pin **8**  
+- 470Ω resistor connected to LED  
+- LDR connected in voltage divider with **10kΩ** resistor  
+- GND and 5V connected appropriately
 
 ### Try It Yourself
 You can try the full simulation here:
